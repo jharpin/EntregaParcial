@@ -1,6 +1,6 @@
 package quindioexpress.logica;import java.util.*;
-import quindioexpress.estructuras.ColeccionPropia;
-import quindioexpress.estructuras.ListaSimplementeEnlazada;
+import quindioexpress.estructura.ColeccionPropia;
+import quindioexpress.estructura.ListaSimplementeEnlazada;
 import quindioexpress.modelo.*;
 public class CentroDistribucion {
 
