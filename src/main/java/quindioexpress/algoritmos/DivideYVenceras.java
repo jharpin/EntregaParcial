@@ -1,7 +1,8 @@
 package quindioexpress.algoritmos;
 
-import java.util.List;
 import quindioexpress.modelo.Paquete;
+
+import java.util.List;
 
 public class DivideYVenceras {
 
