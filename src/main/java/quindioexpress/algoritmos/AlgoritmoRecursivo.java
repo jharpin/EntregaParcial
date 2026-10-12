@@ -20,5 +20,29 @@ public class AlgoritmoRecursivo {
             actual = 0.0;
         }return actual + pesoTotal(paquetes, municipio, i + 1);
     }
+    private static int contar(List<Paquete> paquetes, int minima, int i) {
+        if (i == paquetes.size()) {
+            return 0;
+        }
+        int actual = 0;
+        if (paquetes.get(i).getPrioridad() >= minima) {
+            actual = 1;
+        } else {
+            actual = 0;
+        }
+        return actual + contar(paquetes, minima, i + 1);
+    }
+    public static int contarPrioridadMinima(int[] prioridades, int minima, int i) {
+        if (i == prioridades.length) {
+            return 0;
+        }
+        int actual = 0;
+        if (prioridades[i] >= minima) {
+            actual = 1;
+        } else {
+            actual = 0;
+        }
+        return actual + contarPrioridadMinima(prioridades, minima, i + 1);
+    }
 
 }
