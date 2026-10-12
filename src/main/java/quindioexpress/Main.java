@@ -1,10 +1,22 @@
 package quindioexpress;
 
-import java.util.*;
-import quindioexpress.algoritmos.*;
-import quindioexpress.estructura.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.PriorityQueue;
+
+import quindioexpress.algoritmos.AlgoritmoRecursivo;
+import quindioexpress.algoritmos.BusquedaBinaria;
+import quindioexpress.algoritmos.DivideYVenceras;
+import quindioexpress.estructura.ColeccionPropia;
+import quindioexpress.estructura.ListaSimplementeEnlazada;
 import quindioexpress.logica.CentroDistribucion;
-import quindioexpress.modelo.*;
+import quindioexpress.modelo.ComparadorDespacho;
+import quindioexpress.modelo.ComparadorPesoDesc;
+import quindioexpress.modelo.ComparadorPrioridadDesc;
+import quindioexpress.modelo.ComparadorTiempoAsc;
+import quindioexpress.modelo.Paquete;
+import quindioexpress.modelo.Repartidor;
 
 public class Main {
 
@@ -174,6 +186,47 @@ public class Main {
         System.out.println("Resultado final: " + max.getPeso() + " kg (esperado 18.7)");
         Paquete maxJornada = DivideYVenceras.mayorPeso(centro.getRegistro());
         System.out.println("Mayor peso de la jornada: " + maxJornada);
+    }
+    private static void cargarDatos(CentroDistribucion c) {
+        c.registrarPaquete(new Paquete("PQ731", "Armenia", 7.2, 5, 45));
+        c.registrarPaquete(new Paquete("PQ105", "Salento", 3.0, 5, 25));
+        c.registrarPaquete(new Paquete("PQ942", "Armenia", 18.7, 4, 20));
+        c.registrarPaquete(new Paquete("PQ318", "Calarcá", 4.5, 2, 35));
+        c.registrarPaquete(new Paquete("PQ567", "Salento", 2.1, 1, 50));
+        c.registrarPaquete(new Paquete("PQ829", "Armenia", 2.3, 3, 15));
+        c.registrarPaquete(new Paquete("PQ420", "Montenegro", 12.0, 3, 30));
+        c.registrarPaquete(new Paquete("PQ214", "Quimbaya", 5.1, 4, 40));
+        c.registrarPaquete(new Paquete("PQ421", "Circasia", 6.6, 2, 55));
+        c.registrarPaquete(new Paquete("PQ842", "Filandia", 9.8, 5, 60));
+        c.registrarPaquete(new Paquete("PQ101", "Armenia", 4.5, 1, 10));
+        c.registrarPaquete(new Paquete("PQ203", "Salento", 3.2, 3, 28));
+        c.registrarPaquete(new Paquete("PQ415", "Calarcá", 7.4, 4, 22));
+        c.registrarPaquete(new Paquete("PQ730", "Montenegro", 1.8, 2, 18));
+        c.registrarPaquete(new Paquete("PQ356", "Quimbaya", 11.3, 5, 33));
+        c.registrarPaquete(new Paquete("PQ689", "Circasia", 0.9, 3, 12));
+        c.registrarPaquete(new Paquete("PQ477", "Filandia", 3.6, 4, 27));
+        c.registrarPaquete(new Paquete("PQ512", "Armenia", 8.4, 2, 38));
+        c.registrarPaquete(new Paquete("PQ298", "Calarcá", 6.0, 5, 42));
+        c.registrarPaquete(new Paquete("PQ863", "Salento", 2.7, 4, 19));
+        c.registrarPaquete(new Paquete("PQ154", "Montenegro", 14.2, 1, 65));
+        c.registrarPaquete(new Paquete("PQ905", "Quimbaya", 3.3, 3, 24));
+        c.registrarPaquete(new Paquete("PQ640", "Circasia", 5.5, 5, 31));
+        c.registrarPaquete(new Paquete("PQ377", "Filandia", 7.7, 2, 48));
+        c.registrarPaquete(new Paquete("PQ218", "Armenia", 1.2, 4, 14));
+        c.registrarPaquete(new Paquete("PQ791", "Calarcá", 10.1, 3, 52));
+        c.registrarPaquete(new Paquete("PQ436", "Salento", 4.9, 2, 36));
+        c.registrarPaquete(new Paquete("PQ608", "Montenegro", 6.8, 5, 29));
+        c.registrarPaquete(new Paquete("PQ983", "Quimbaya", 2.4, 1, 21));
+        c.registrarPaquete(new Paquete("PQ259", "Circasia", 8.9, 4, 44));
+
+        c.registrarRepartidor(new Repartidor("R01", "Ana Gómez", "Armenia", true));
+        c.registrarRepartidor(new Repartidor("R02", "Luis Pérez", "Armenia", true));
+        c.registrarRepartidor(new Repartidor("R03", "Carla Ríos", "Calarcá", false));
+        c.registrarRepartidor(new Repartidor("R04", "Jorge Mejía", "Salento", true));
+        c.registrarRepartidor(new Repartidor("R05", "Sofía Ramírez", "Montenegro", true));
+        c.registrarRepartidor(new Repartidor("R06", "Diego Torres", "Quimbaya", true));
+        c.registrarRepartidor(new Repartidor("R07", "Valentina Ruiz", "Circasia", true));
+        c.registrarRepartidor(new Repartidor("R08", "Andrés Castaño", "Filandia", true));
     }
 
 
