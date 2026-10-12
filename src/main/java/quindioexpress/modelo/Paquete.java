@@ -10,7 +10,7 @@ public class Paquete implements Comparable<Paquete> {
     private final int prioridad;
     private final int tiempoEstimado;
     private EstadoPaquete estado = EstadoPaquete.PENDIENTE;
-    private Repartidor repartido;
+    private Repartidor repartidor;
 
     public Paquete(String codigo, String destino, double peso, int tiempoEstimado) {
         validar(codigo, destino, peso, 5, tiempoEstimado);
@@ -20,6 +20,15 @@ public class Paquete implements Comparable<Paquete> {
         this.prioridad = 5;
         this.tiempoEstimado = tiempoEstimado;
 
+    }
+
+    public Paquete(String codigo, String destino, double peso, int prioridad, int tiempoEstimado) {
+        validar(codigo, destino, peso, prioridad, tiempoEstimado);
+        this.codigo = codigo;
+        this.destino = destino;
+        this.peso = peso;
+        this.prioridad = prioridad;
+        this.tiempoEstimado = tiempoEstimado;
     }
 
     private void validar(String codigo, String destino, double peso, int prioridad, int tiempoEstimado) {
@@ -38,6 +47,43 @@ public class Paquete implements Comparable<Paquete> {
         if (tiempoEstimado <= 0) {
             throw new RuntimeException("El tiempo estimado debe ser mayor que cero (" + codigo + ")");
         }
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public String getDestino() {
+        return destino;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public int getPrioridad() {
+        return prioridad;
+    }
+
+    public int getTiempoEstimado() {
+        return tiempoEstimado;
+    }
+
+    public EstadoPaquete getEstado() {
+        return estado;
+    }
+
+    public Repartidor getRepartidor() {
+        return repartidor;
+    }
+
+    public void asignar(Repartidor r) {
+        this.repartidor = r;
+        this.estado = EstadoPaquete.ASIGNADO;
+    }
+
+    public void marcarEntregado() {
+        this.estado = EstadoPaquete.ENTREGADO;
     }
 
     @Override
