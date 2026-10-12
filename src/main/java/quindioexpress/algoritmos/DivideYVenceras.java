@@ -33,4 +33,8 @@ public class DivideYVenceras {
             return derecho;
         }
     }
+
+    public static Paquete mayorPeso(List<Paquete> ejemploDyV, boolean b) {
+        return null;
+    }
 }

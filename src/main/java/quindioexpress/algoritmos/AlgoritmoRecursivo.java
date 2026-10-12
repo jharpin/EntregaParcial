@@ -32,6 +32,9 @@ public class AlgoritmoRecursivo {
         }
         return actual + contar(paquetes, minima, i + 1);
     }
+    public static int contarPrioridadMinima(List<Paquete> paquetes, int minima) {
+        return minima;
+    }
     public static int contarPrioridadMinima(int[] prioridades, int minima, int i) {
         if (i == prioridades.length) {
             return 0;

@@ -27,4 +27,8 @@ public class BusquedaBinaria {
             return buscar(ordenada, buscado, inicio, mitad - 1);
         }
     }
+
+    public static int buscar(List<String> codigosOrdenados, String pq731, boolean b) {
+        return 0;
+    }
 }
