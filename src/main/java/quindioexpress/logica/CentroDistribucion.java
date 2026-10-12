@@ -1,7 +1,24 @@
-package quindioexpress.logica;import java.util.*;
+package quindioexpress.logica;import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
+import java.util.TreeSet;
+
 import quindioexpress.estructura.ColeccionPropia;
 import quindioexpress.estructura.ListaSimplementeEnlazada;
-import quindioexpress.modelo.*;
+import quindioexpress.modelo.ComparadorDespacho;
+import quindioexpress.modelo.EstadoPaquete;
+import quindioexpress.modelo.Paquete;
+import quindioexpress.modelo.Repartidor;
 public class CentroDistribucion {
 
     private final List<Paquete> registro = new ArrayList<>();
@@ -102,4 +119,43 @@ public class CentroDistribucion {
         }
         return null;
     }
+
+
+    public Paquete asignarPorLlegada() { return asignarDesde(colaLlegada); }
+
+  
+    public Paquete asignarPorPrioridad() { return asignarDesde(colaPrioridad); }
+
+  
+    public Paquete siguientePorPrioridad() { return colaPrioridad.peek(); }
+
+
+    private Paquete asignarDesde(Queue<Paquete> cola) {
+        Paquete p = cola.peek();
+        if (p == null) return null;
+        Repartidor r = repartidorDisponiblePara(p.getDestino());
+        if (r == null) return null;
+        colaLlegada.remove(p);
+        colaPrioridad.remove(p);
+        p.asignar(r);
+        r.setDisponible(false);
+        return p;
+    }
+
+   
+    public void registrarEntrega(String codigo) {
+        Paquete p = paquetesPorCodigo.get(codigo);
+        if (p == null) throw new RuntimeException("No existe el paquete " + codigo);
+        if (p.getEstado() != EstadoPaquete.ASIGNADO) {
+            throw new RuntimeException("El paquete " + codigo + " no está asignado (" + p.getEstado() + ")");
+        }
+        p.marcarEntregado();
+        p.getRepartidor().setDisponible(true);
+        historial.agregar(p);
+    }
+
+    public Iterable<Paquete> getHistorial() { return historial; }
+
+    public int cantidadEntregados() { return historial.tamanio(); }
 }
+
