@@ -82,6 +82,36 @@ public class CentroDistribucion {
         Collections.sort(copia, criterio);
         return copia;
     }
+    
+    public void registrarRepartidor(Repartidor r) {
+        if (repartidoresPorId.containsKey(r.getIdentificacion())) {
+            throw new RuntimeException("Ya existe un repartidor con identificación " + r.getIdentificacion());
+        }
+        repartidoresPorId.put(r.getIdentificacion(), r);
+
+        List<Repartidor> deLaZona = repartidoresPorZona.get(r.getZona());
+        if (deLaZona == null) {
+            deLaZona = new ArrayList<>();
+            repartidoresPorZona.put(r.getZona(), deLaZona);
+        }
+        deLaZona.add(r);
+    }
+
+    public Repartidor buscarRepartidor(String id) { return repartidoresPorId.get(id); }
+
+    public Collection<Repartidor> getRepartidores() { return Collections.unmodifiableCollection(repartidoresPorId.values()); }
+
+   
+    private Repartidor repartidorDisponiblePara(String destino) {
+        List<Repartidor> deLaZona = repartidoresPorZona.get(destino);
+        if (deLaZona == null) {
+            return null;
+        }
+        for (Repartidor r : deLaZona) {
+            if (r.isDisponible()) return r;
+        }
+        return null;
+    }
     }
 
 
