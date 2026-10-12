@@ -73,10 +73,6 @@ public class CentroDistribucion {
         Collections.sort(copia, criterio);
         return copia;
     }
-<<<<<<< HEAD
-}
-=======
-    
     public void registrarRepartidor(Repartidor r) {
         if (repartidoresPorId.containsKey(r.getIdentificacion())) {
             throw new RuntimeException("Ya existe un repartidor con identificación " + r.getIdentificacion());
@@ -106,7 +102,7 @@ public class CentroDistribucion {
         }
         return null;
     }
-    }
+    
 
 
 >>>>>>> b7abb1b08648eca0e5786aa372ae9bef78687063
