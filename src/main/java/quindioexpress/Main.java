@@ -176,7 +176,7 @@ public class Main {
         System.out.println("Mayor peso de la jornada: " + maxJornada);
     }
 
-}
+
     private static List<String> codigos(Collection<Paquete> ps) {
         List<String> r = new ArrayList<>();
         for (Paquete p : ps) {
@@ -198,4 +198,5 @@ public class Main {
             System.out.println("Rechazado: " + e.getMessage());
         }
     }
+}
 
