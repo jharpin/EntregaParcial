@@ -3,7 +3,7 @@ package quindioexpress.estructura;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-/** Iterador de la lista enlazada: recorre desde el primer nodo sin exponer los nodos a quien lo usa. */
+
 public class ListaIterator<T> implements Iterator<T> {
 
     private Nodo<T> actual;
