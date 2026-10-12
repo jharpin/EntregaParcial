@@ -1,4 +1,4 @@
-package quindioexpress.estructuras;
+package quindioexpress.estructura;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
